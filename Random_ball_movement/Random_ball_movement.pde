@@ -6,30 +6,30 @@ void setup() {
   pos= new PVector(width/2, height/2);
   speed= new PVector(random(-1,1),random(-1,1));
   acc= new PVector(random(-.1,.1),random(-.1,.1));
-  textSize(40);
   colorMode(HSB,100,100,100,100);
 }
 
 void draw() {
-  fill(0,20);
+  fill(0,0,0,5);
   rect(0,0,width,height);
   fill(255);
   fill(frameCount%360,100,100);
   ellipse(pos.x, pos.y, sz, sz);
-  speed.add(acc);
   pos.add(speed);
-  acc.add(random(-.1,.1),random(-.1,.1) );
-  if (x-sz/2>=width) {
-    x=sz/2;
+  speed.limit(5);
+  speed.add(acc);
+  acc.add(random(-.01,.01),random(-.01,.01), 0 );
+  if (pos.x-sz/2>width) {
+    pos.x=-sz/2;
   }
-  if (x+sz/2<=0) {
-    x=sz/2-width;
+  if (pos.x+sz/2<0) {
+    pos.x=sz/2+width;
   }
-  if (y<=0) {
-    y=sz/2-height;
+  if (pos.y+sz/2<0) {
+    pos.y=height+sz/2;
   }
-  if(y-sz/2>=height){
-    y=-sz/2;
+  if(pos.y-sz/2>height){
+    pos.y=-sz/2;
   }
 }
 
