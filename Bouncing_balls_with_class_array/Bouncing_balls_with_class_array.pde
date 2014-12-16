@@ -1,50 +1,26 @@
-int count=100;
-Ball[] b= new Ball[count]; 
+ArrayList<Ball> b= new ArrayList<Ball>(); 
 
 void setup() {
   size(800, 600);
-  for (int i=0; i<100; i++) {
-    b[i] = new Ball();
-  }
 }
 
 void draw() {
   background(0);
-  for (int i=0; i<100; i++) {
-    b[i].move();
-    b[i].bounce();
-    b[i].display();
-  }
-}
-class Ball {
-
-  float sz;
-  PVector loc, vel;
-
-  Ball() {
-    sz = 50;
-    loc = new PVector(width/2, height/2);
-    vel = PVector.random2D();
-    colorMode(HSB,100,100,100);
-  }
-
-  void display() {
-    ellipse(loc.x, loc.y, sz, sz);
-  }
-
-  void move() {
-    loc.add(vel);
-  }
-
-  void bounce() {
-    if (loc.x + sz/2 > width || loc.x - sz/2 < 0) {
-      fill(random(0,359),random(0,100),random(0,100));
-      vel.x *= -1;
+  b.add(new Ball());
+  for (int i=0; i<b.size (); i++) {
+    Ball ball=b.get(i);
+    ball.move();
+    ball.bounce();
+    ball.display();
+    for (int j=0; j<b.size (); j++) {
+      if (j!=i) {
+        Ball otherBall= b.get(j);
+        ball.bounceWith(otherBall);
+      }
     }
-    if (loc.y + sz/2 > height || loc.y - sz/2 < 0) {
-      vel.y *= -1;
-      fill(random(0,359),random(0,100),random(0,100));    
   }
+  if (b.size()>100) {
+    b.remove(100);
   }
 }
 
