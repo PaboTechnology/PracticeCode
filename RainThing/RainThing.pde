@@ -10,16 +10,15 @@ void draw() {
   for (int i=0; i<25; i++) {
     rain.add(new Rain());
   }
-  u.display();
-
   for (int i=0; i<rain.size (); i++) {
     Rain r=rain.get(i);
     r.display(); 
     r.move();
-//    if(
-    //    if (mousePressed) {
-    //      if(
-    //      r.flood();
+    if(r.loc.y>height){
+      rain.remove(i);
+    }
   }
+    u.display();
+    u.retract();
 }
 

@@ -20,11 +20,5 @@ class Rain {
     acc.y+=.02;
     acc.x+=.002;
   }
-//  void flood() {
-//    if (loc.y>height) {
-//      loc.y=;
-//      vel.x=0;
-//    }
-//  }
-//}
 }
+
