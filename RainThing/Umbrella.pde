@@ -25,8 +25,13 @@ class Umbrella {
       sz.y=200;
       rectWidth=10;
     } else {
-      sz.x=100;
-      sz.y=100;
+      fill(120);
+      rect(mouse.x-50,mouse.y-50,100,100);
+      PImage Umbrella;
+       Umbrella = loadImage("Umbrella.png");
+      Umbrella.resize(int(sz.x), int(sz.y));
+    image(Umbrella, mouse.x-50, mouse.y-50);
+      sz=new PVector(100,100);
       rectWidth=100;
     }
   }

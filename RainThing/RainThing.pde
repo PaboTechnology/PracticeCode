@@ -14,11 +14,11 @@ void draw() {
     Rain r=rain.get(i);
     r.display(); 
     r.move();
-    if(r.loc.y>height){
+    if (r.loc.y>height) {
       rain.remove(i);
     }
   }
-    u.display();
-    u.retract();
+  u.display();
+  u.retract();
 }
 
